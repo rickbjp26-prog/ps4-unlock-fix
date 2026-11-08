@@ -1,22 +1,22 @@
-# PS4 UNLOCK FIX — versão inicial
+# PS4 UNLOCK FIX — versão de referência
 
-Interface estática em português para PS4, com seletor de firmware, matriz documental de compatibilidade e diagnóstico básico do navegador.
+Interface estática em português para PS4, com seletor de firmware, referências públicas de rota e diagnóstico básico do navegador.
 
-## Estado atual
-- Firmware 13.02: projeto comunitário público documenta a cadeia Slopkit (WebKit) + Relapse (kernel) e lista GoldHEN 2.4b18.12.
-- Firmware 13.04 e 13.50: a mesma coleção lista a cadeia Relapse; GoldHEN 2.4b18.12 é indicado para 13.02–13.50.
-- Firmware 13.52: a coleção lista Slopkit Relapse e GoldHEN 2.4b18.11.
-- Firmware 14.00: não habilitado nesta matriz.
+## Firmware atualmente listado
+- **13.02 e 13.04:** referências públicas apontam para Slopkit (WebKit) + Relapse (kernel).
+- **13.50 e 13.52:** referências públicas também apontam para Slopkit + Relapse; detalhes de payload e testes variam conforme a implementação.
 
-Referência técnica consultada: https://github.com/eddieygaming/ps4aio (README, seção “Supported firmware flows” e “Homebrew Enablers versions”). Outra referência de status: https://github.com/caziques/PS4.
-
-**Importante:** essas referências são documentação de projetos comunitários, não testes realizados pelo PS4 UNLOCK FIX. A página ainda não contém a cadeia de exploit, kernel patches nem payload GoldHEN. A verificação de firmware não executa jailbreak.
+As referências não significam que o PS4 UNLOCK FIX já execute a cadeia. Nenhum exploit, kernel patch ou payload está incluído nesta versão. O botão de módulo apenas informa que a integração está pendente.
 
 ## Diagnóstico
-Verifica somente JavaScript, elementos da página, HTTPS, firmware selecionado e conectividade. Não testa kernel, exploit, GoldHEN ou hardware.
+Verifica apenas JavaScript, DOM, HTTPS, firmware selecionado e conectividade do navegador. Não testa kernel, exploit, GoldHEN ou hardware.
 
-## Publicação
-GitHub Pages: https://rickbjp26-prog.github.io/ps4-unlock-fix/
+## Referências públicas consultadas
+- ConsoleMods — PS4 Exploit Chart: https://consolemods.org/wiki/PS4:Exploit_Chart
+- HenJB — tabela de firmware: https://henjb.com/
+- PS4 AIO — coleções WebKit: https://github.com/eddieygaming/ps4aio
+- WebKitty — cadeia Slopkit/Relapse: https://github.com/ArabPixel/WebKitty
 
-## Segurança e limites
-Exploit pode travar o navegador ou reiniciar o console. Não há garantia de sucesso em todo console. Antes de integrar qualquer código externo, revisar origem, licença, integridade, offsets e compatibilidade exata; nunca combinar payloads de firmwares diferentes.
+A cena muda rapidamente. Antes de qualquer integração, é necessário conferir o código-fonte original, licença, arquivos específicos de firmware e testes reais no hardware. Exploits podem falhar, travar o navegador ou reiniciar o console.
+
+Projeto independente, sem afiliação com a Sony.
