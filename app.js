@@ -1,6 +1,6 @@
 /* PS4 UNLOCK FIX — firmware guide and hand-off to the maintained exploit host.
    Exploit chains and GoldHEN payloads are served by WebKitty, not bundled here. */
-const HOST_URL = "https://webkitty.arabpixel.net/";
+const HOST_URL = "https://rickbjp26-prog.github.io/";
 const routes = {
   "13.02": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
   "13.04": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
