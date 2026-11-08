@@ -49,7 +49,11 @@ $("diagBtn").addEventListener("click", () => {
 $("exploitBtn").addEventListener("click", () => {
   const fw = $("firmware").value;
   if (!routes[fw]) {
-    alert("Selecione uma das versões listadas: 13.02, 13.04, 13.50, 13.52 ou 14.00.");
+    const box = $("compat");
+    box.className = "notice warn";
+    box.textContent = "Antes de iniciar, selecione o firmware do PS4: 13.02, 13.04, 13.50, 13.52 ou 14.00.";
+    log("Ativação não iniciada: firmware não selecionado ou não reconhecido.", "ATENÇÃO");
+    $("firmware").focus();
     return;
   }
   log(`Abrindo WebKitty para firmware selecionado ${fw}. O host detecta o firmware real do console e escolhe a cadeia compatível.`, "INÍCIO");
