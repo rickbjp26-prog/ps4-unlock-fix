@@ -1,17 +1,12 @@
-/* PS4 UNLOCK FIX — firmware guide and safe hand-off to the maintained exploit host.
-   The exploit chain and GoldHEN payload are served by WebKitty, not bundled here. */
+/* PS4 UNLOCK FIX — firmware guide and hand-off to the maintained exploit host.
+   Exploit chains and GoldHEN payloads are served by WebKitty, not bundled here. */
 const HOST_URL = "https://webkitty.arabpixel.net/";
 const routes = {
-  "13.02": {
-    chain: "Slopkit (WebKit) + Relapse (kernel)",
-    goldhen: "GoldHEN (default selection in WebKitty; firmware-specific build)",
-    note: "Primeira rota de teste do projeto. O host externo detecta o firmware real do PS4."
-  },
-  "14.00": {
-    chain: "Slopkit (WebKit) + Afterglow (kernel)",
-    goldhen: "GoldHEN (default selection in WebKitty; build com suporte a 14.00)",
-    note: "Rota separada para a segunda etapa. Ainda precisa de teste real em um PS4 14.00."
-  }
+  "13.02": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
+  "13.04": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
+  "13.50": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
+  "13.52": { chain: "SlopKit + Relapse", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota da família 12.50–13.52; compatibilidade final depende do host e do console." },
+  "14.00": { chain: "SlopKit + Afterglow", goldhen: "GoldHEN como HEN padrão do WebKitty", note: "Rota separada para firmware 14.00; requer teste real neste firmware." }
 };
 const $ = id => document.getElementById(id);
 function log(message, type = "INFO") {
@@ -32,12 +27,12 @@ $("checkBtn").addEventListener("click", () => {
   const route = routes[fw];
   if (route) {
     box.className = "notice good";
-    box.textContent = `Firmware ${fw} — ${route.chain}. GoldHEN: ${route.goldhen}. ${route.note} A compatibilidade final deve ser confirmada no próprio console.`;
-    log(`Firmware ${fw}: rota preparada — ${route.chain}; GoldHEN automático após o exploit no host compatível.`, "ROTA");
+    box.textContent = `Firmware ${fw} — ${route.chain}. ${route.goldhen}. ${route.note} A seleção não substitui a detecção feita pelo host no PS4.`;
+    log(`Firmware ${fw}: rota indicada — ${route.chain}.`, "ROTA");
   } else {
     box.className = "notice warn";
-    box.textContent = "Nesta etapa, o projeto só prepara as rotas 13.02 e 14.00. Não escolha outra versão.";
-    log(`Firmware ${fw}: rota ainda não preparada.`, "ATENÇÃO");
+    box.textContent = "Firmware não incluído nesta versão do projeto.";
+    log(`Firmware ${fw}: rota não preparada.`, "ATENÇÃO");
   }
 });
 $("diagBtn").addEventListener("click", () => {
@@ -54,14 +49,14 @@ $("diagBtn").addEventListener("click", () => {
 $("exploitBtn").addEventListener("click", () => {
   const fw = $("firmware").value;
   if (!routes[fw]) {
-    alert("Selecione 13.02 para o primeiro teste ou 14.00 para a rota preparada separadamente.");
+    alert("Selecione uma das versões listadas: 13.02, 13.04, 13.50, 13.52 ou 14.00.");
     return;
   }
-  log(`Abrindo WebKitty para firmware ${fw}. O GoldHEN é escolhido automaticamente como HEN padrão; não é necessário clicar em um botão separado para carregá-lo após o exploit.`, "INÍCIO");
+  log(`Abrindo WebKitty para firmware selecionado ${fw}. O host detecta o firmware real do console e escolhe a cadeia compatível.`, "INÍCIO");
   window.location.assign(HOST_URL);
 });
 $("clearBtn").addEventListener("click", () => {
   $("log").replaceChildren();
   log("Relatório limpo.");
 });
-log("PS4 UNLOCK FIX iniciado. Launcher com encaminhamento para host comunitário mantido.");
+log("PS4 UNLOCK FIX iniciado. Cinco versões disponíveis no seletor.");
